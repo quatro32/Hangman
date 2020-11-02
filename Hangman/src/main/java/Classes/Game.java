@@ -55,17 +55,7 @@ public class Game {
     }
     
     private void setSelectedDifficulty(DifficultyType diff) {
-        switch (diff) {
-            case Easy:
-                this.currentDifficulty = (Difficulty)repo.get(EasyDifficulty.class, diff.getValue());
-                break;
-            case Medium:
-                this.currentDifficulty = (Difficulty)repo.get(MediumDifficulty.class, diff.getValue());
-                break;
-            case Hard:
-                this.currentDifficulty = (Difficulty)repo.get(HardDifficulty.class, diff.getValue());
-                break;
-        }
+        this.currentDifficulty = new DifficultyFactory().getDifficulty(repo, diff);
         this.difficultyType = diff;
     }
 
